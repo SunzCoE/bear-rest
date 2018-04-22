@@ -5,8 +5,8 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 
 var bears = [
-    { id: 1, name: "Ple" },
-    { id: 2, name: "Tum" }
+    { id: 1, name: "Gerrard" },
+    { id: 2, name: "Salah" }
 ];
 
 router.route('/bears')
