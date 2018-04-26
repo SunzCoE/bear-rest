@@ -8,6 +8,7 @@ var bears = [
     { id: '1', name: 'Gerrard' },
     { id: '2', name: 'Salah' }
 ]; 
+var last_bear_id = 3;
   
 router.route('/bears') 
     .get(function(req, res) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteBear } from './actions';
+//import { deleteBear } from './actions';
+import { deleteBear, createBear } from './actions';
 //import axios from 'axios';
 //import { createStore, applyMiddleware} from 'redux';
 //import { createStore, applyMiddleware, combineReducers } from 'redux';
@@ -36,6 +37,7 @@ let store = createStoreWithMiddleware(combineReducers({
 class App extends Component {
   constructor(props){
     super(props)
+    this.state = {bearName: ''};
     /*this.state = {data: []};
   }
   componentDidMount(){
@@ -49,6 +51,14 @@ class App extends Component {
     //store.dispatch(fetchBearActionCreator());
     store.dispatch(fetchBear());*/
   }
+  onBearNameChanged = (e) => {
+    this.setState({bearName: e.target.value});
+  }
+  toCreateBear = () => {
+    this.props.createBear({name: this.state.bearName});
+    this.setState({bearName: ''});
+  }
+
   render() {
     //let bears = this.state.data;
     let bears = this.props.bear;
@@ -64,6 +74,8 @@ class App extends Component {
           </div>
         ))
       }
+      <input value={this.state.bearName} onChange={this.onBearNameChanged}/>
+      <button onClick={this.toCreateBear}>Add</button>
       </div>
     );
   }
@@ -75,6 +87,8 @@ let mapStateToProps = (state) => (
 )
 //export default connect(mapStateToProps)(App);
 export default connect(mapStateToProps, {
-  deleteBear: deleteBear
+  //deleteBear: deleteBear
+  deleteBear,
+  createBear
 })(App);
 
