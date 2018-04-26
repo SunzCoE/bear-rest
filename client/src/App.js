@@ -77,3 +77,4 @@ let mapStateToProps = (state) => (
 export default connect(mapStateToProps, {
   deleteBear: deleteBear
 })(App);
+

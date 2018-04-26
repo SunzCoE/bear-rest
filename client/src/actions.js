@@ -6,7 +6,7 @@ export function fetchBear(){
         dispatch({type: 'FETCH_BEAR', payload: result.data})
       })
     }
-}
+  }
 
 export function deleteBear(id) {
     return (dispatch) => {
