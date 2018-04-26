@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { deleteBear } from './actions';
 //import axios from 'axios';
 //import { createStore, applyMiddleware} from 'redux';
 //import { createStore, applyMiddleware, combineReducers } from 'redux';
@@ -55,7 +56,13 @@ class App extends Component {
       //<div>Hello world</div>
       <div>
       {
-        bears.map(bear => <div key={bear.id}>{bear.name}</div>)
+        //bears.map(bear => <div key={bear.id}>{bear.name}</div>)
+        bears.map(bear => (
+          <div key={bear.id}>
+          {bear.name}
+          <button onClick={() => this.props.deleteBear(bear.id)}>X</button>
+          </div>
+        ))
       }
       </div>
     );
@@ -66,4 +73,7 @@ class App extends Component {
 let mapStateToProps = (state) => (
   {bear: state.bear}
 )
-export default connect(mapStateToProps)(App);
+//export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {
+  deleteBear: deleteBear
+})(App);
